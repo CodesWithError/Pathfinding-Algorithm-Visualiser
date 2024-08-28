@@ -1,0 +1,256 @@
+body {
+  font-family: 'Mooli', sans-serif;
+  margin: 0;
+  padding: 0;
+
+}
+
+.container {
+  text-align: center;
+  background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+  color: rgb(222, 42, 42);
+}
+
+/* Style the navbar */
+.navbar {
+  background-color: #385170;
+  overflow: hidden;
+}
+
+.title-word {
+  animation: color-animation 4s linear infinite;
+}
+
+.title-word-1 {
+  --color-1: #DF8453;
+  --color-2: #9f915d;
+  --color-3: #E4A9A8;
+}
+
+.title-word-2 {
+  --color-1: #DBAD4A;
+  --color-2: #ACCFCB;
+  --color-3: #d857c5;
+}
+
+.title-word-3 {
+  --color-1: #ACCFCB;
+  --color-2: #E4A9A8;
+  --color-3: #ACCFCB;
+}
+
+.title-word-4 {
+  --color-1: #eda1d7;
+  --color-2: #DF8453;
+  --color-3: #E4A9A8;
+}
+
+@keyframes color-animation {
+  0% {
+    color: var(--color-1)
+  }
+
+  32% {
+    color: var(--color-1)
+  }
+
+  33% {
+    color: var(--color-2)
+  }
+
+  65% {
+    color: var(--color-2)
+  }
+
+  66% {
+    color: var(--color-3)
+  }
+
+  99% {
+    color: var(--color-3)
+  }
+
+  100% {
+    color: var(--color-1)
+  }
+}
+
+/* Style the navbar buttons */
+.navbar-btn {
+  float: left;
+  display: block;
+  color: rgb(21, 21, 21);
+  text-align: center;
+  padding: 14px 16px;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* Style the dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Style the dropdown button */
+.dropbutton {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: black;
+  font-family: inherit;
+  margin-left: 5px;
+  margin-bottom: 15px;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #6d6767;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+
+/* Style the buttons inside the dropdown content */
+.dropdown-content button {
+  background-color: rgb(53, 49, 49);
+  color: rgb(242, 240, 240);
+  padding: 10px;
+  text-align: left;
+  border: none;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Change color on hover */
+.dropdown-content button:hover {
+  background-color: #131111;
+}
+
+/* Show the dropdown content when the dropdown button is hovered over */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.right-side-content {
+  float: right; /* Float the element to the right */
+  width: 30%; /* Set the width of the right side content */
+  padding: 20px; /* Add some padding for spacing */
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  margin-top: 40px;
+  margin-right: 20px;
+  color: rgb(5, 50, 78);
+  font-weight: 400;
+}
+/* Define a CSS class for a simple fade-in animation */
+.fade-in {
+  animation: fadeIn 4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.box-shadow-effect { 
+  box-shadow: rgba(41, 111, 132, 0.35) 0px 5px 15px;; 
+  border: 2px solid #9cdae4;
+  border-radius: 3px;
+}
+
+
+
+
+/* Style the category boxes */
+.category-box {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.startend-box {
+  background-color: #36c2e1;
+  margin-right: 30px;
+
+}
+
+.wallnode-box {
+  background-color: #a5c1f8;
+  margin-right: 30px;
+
+}
+
+.shortpath-box {
+  background-color: #e10b88;
+  margin-right: 500px;
+
+}
+
+.adv {
+  font-size: 12px;
+  margin-top: 20px;
+
+
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(20, 30px);
+  gap: 2px;
+  margin: 60px;
+}
+
+.grid-item {
+  width: 30px;
+  height: 30px;
+  background-color: #142d4c;
+  border: 1px solid #3b3a30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+
+.traversed {
+  background-color: #2d656f;
+ 
+}
+
+.wall {
+  background-color: #a5c1f8;
+}
+
+.start,
+.end {
+  background-color: #36c2e1;
+
+}
+
+.path {
+  background-color: #e10b88;
+
+}
+
+.open{
+  background-color: red;
+}

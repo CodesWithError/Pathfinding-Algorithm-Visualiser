@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Path Finding Visualizer</title>
+  <link rel="stylesheet" href="you.css">
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
+
+<body>
+  <div class="container">
+
+    <!-- navbar  -->
+    <nav class="navbar">
+      <h1 class="title">
+        <span class="title-word title-word-1">Path</span>
+        <span class="title-word title-word-2">finding</span>
+        <span class="title-word title-word-3">Algorithm</span>
+        <span class="title-word title-word-4">Visualiser</span>
+
+      </h1>
+
+      <!-- dropdown button  -->
+      <div class="dropdown">
+        <button class="dropbutton">Algorithms</button>
+        <div class="dropdown-content">
+          <button class="Algo" onclick="visualizeDijkstra(); showDijkstraContent();">Visualize Dijkstra's Algorithm</button>
+          <button class="Algo" onclick=" visualizeBFS();showBFScontent();"> visualize-BFS</button>
+          <button class="Algo" onclick="visualizeDFS();showDFScontent();">Visualize Depth-First Search</button>
+          <!-- Depth-First Search (DFS) is a graph traversal algorithm used to explore or search through graphs or grids. When traversing a grid, DFS chooses its next node based on a specific strategy. The key idea behind DFS is to explore as deeply as possible along one branch of the graph (or grid) before backtracking. -->
+
+          <!-- Here's how DFS chooses its next node in a grid:
+          
+          1. **Starting Node**: DFS begins at a designated starting node (or cell) in the grid.
+          
+          2. **Explore**: It explores the current node by visiting one of its unvisited neighbors. The choice of which neighbor to visit first depends on the specific implementation.
+           DFS doesn't have a strict rule about the order of neighbor exploration. It typically explores neighbors in a consistent order, which could be based on one of the following methods:
+             
+             - **Left-First**: DFS may explore neighbors in a left-first manner, meaning it prefers to move to the left neighbor before others.
+             
+             - **Top-First**: Similarly, it may choose the top neighbor first.
+             
+             - **Right-First or Bottom-First**: Depending on the implementation, DFS may also choose the right or bottom neighbor first.
+          
+          3. **Recursion or Stack**: When DFS chooses a neighbor to explore, it moves to that neighbor and marks it as visited. It may use recursion (function calls) or a stack data structure to remember where it is in the exploration process. This way, it can return to the current node after fully exploring its neighbor.
+          
+          4. **Backtracking**: If DFS reaches a point where it has no unvisited neighbors, it backtracks to the previous node (the one that led to the current node) and looks for other unexplored branches from there.
+          
+          5. **Termination**: DFS continues this process until it has visited all nodes it can reach from the starting point or until it finds the target or goal node if it's a search task. It may terminate when all nodes are visited or when it satisfies the goal condition.
+          
+          The specific order in which neighbors are explored (left-first, top-first, etc.) depends on the implementation details and can vary based on the application. DFS does not guarantee an optimal path or solution, but it is a fundamental algorithm for exploring and searching graphs, including grids.
+          
+          In summary, DFS explores a grid by making choices about which neighbor to visit next, marking the visited nodes, and backtracking when necessary to explore all possible paths. The order of exploration may vary depending on the specific implementation.
+          -->
+
+        </div>
+      </div>
+
+      <!-- clear grid button  -->
+
+      <button class="navbar-btn" onclick="clearGrid();clearRightContent();">Clear Grid</button>
+
+      <div class="category-box startend-box">
+        <h1 class="adv">Start/End Node</h1>
+      </div>
+      <div class="category-box wallnode-box">
+        <h1 class="adv">Wall Nodes</h1>
+      </div>
+      <div class="category-box shortpath-box">
+        <h1 class="adv">Shortest-path</h1>
+      </div>
+    </nav>
+
+    <!-- this is the right side content  -->
+    <div class="right-side-content" id="right-content">
+      
+    </div>
+    <div class="grid-container" id="grid-container">
+      <!-- The grid will be dynamically created with JavaScript -->
+    </div>
+
+
+  </div>
+
+
+  <script src="you.js"></script>
+</body>
+
+</html>

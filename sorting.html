@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bubble Sort Visualizer</title>
+  <link rel="stylesheet" type="text/css" href="sorting.css">
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
+<body>
+    <div class="container1">
+
+        <!-- navbar  -->
+        <nav class="navbar">
+          <h1 class="title">
+            <span class="title-word title-word-1">Sorting</span>
+            <span class="title-word title-word-2">Algorithm</span>
+            <span class="title-word title-word-3">Visualiser</span>
+           
+    
+          </h1>
+ <!-- dropdown button  -->
+ <div class="dropdown">
+    <button class="dropbutton">Sorting Algorithms</button>
+    <div class="dropdown-content">
+      <button id="bubblestart" class="Algo" >Bubble Sort</button>
+      <button id="quickstart" class="Algo" >Quick Sort</button>
+      <button id="mergestart" class="Algo" >Merge Sort</button>
+      <button id="insertionstart" class="Algo">Insertion Sort</button>
+      <button id="Heapstart" class="Algo" >Heap Sort</button>
+      
+      </div>
+    </div>
+    <div class="button-container">
+        <button class="stopButton" id="stopButton">Stop</button>
+        <button class="resetButton" id="resetButton">Reset</button>
+  </div>
+</nav>
+
+</div>
+<div class="sorting-container" id="container"></div>
+ 
+
+  <script src="sorting.js"></script>
+</body>
+</html>
