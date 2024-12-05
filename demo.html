@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="graphCanvas" width="400" height="300"></canvas>
+
+  <script>
+    const canvas = document.getElementById('graphCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const graph = {
+      A: ['B', 'C'],
+      B: ['D', 'E'],
+      C: ['F'],
+      D: ['G'],
+      E: ['H'],
+      F: ['I'],
+      G: [],
+      H: [],
+      I: []
+    };
+
+    function drawGraph() {
+      for (const node in graph) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        drawNode(node, x, y);
+        for (const neighbor of graph[node]) {
+          drawArrow(x, y, neighbor);
+        }
+      }
+    }
+
+    function drawNode(node, x, y) {
+      ctx.beginPath();
+      ctx.arc(x, y, 20, 0, Math.PI * 2);
+      ctx.fillStyle = 'lightblue';
+      ctx.fill();
+      ctx.stroke();
+      ctx.font = 'bold 16px Arial';
+      ctx.fillStyle = 'black';
+      ctx.fillText(node, x - 8, y + 8);
+    }
+
+    function drawArrow(x, y, neighbor) {
+      const neighborCoords = getNeighborCoords(x, y, neighbor);
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(neighborCoords.x, neighborCoords.y);
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function getNeighborCoords(x, y, neighbor) {
+      const distance = 50; // Adjust arrow length as needed
+      const angle = Math.atan2(y - canvas.height / 2, x - canvas.width / 2);
+      const newX = x - distance * Math.cos(angle);
+      const newY = y - distance * Math.sin(angle);
+      return { x: newX, y: newY };
+    }
+
+    // Call this function to start the visualization
+    drawGraph();
+  </script>
+</body>
+</html>

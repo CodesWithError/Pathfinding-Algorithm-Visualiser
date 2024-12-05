@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(10, 40px);
+      grid-template-rows: repeat(10, 40px);
+      gap: 1px;
+    }
+    .grid-cell {
+      width: 40px;
+      height: 40px;
+      background-color: #3498db;
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      font-size: 16px;
+    }
+    .start-node {
+      background-color: green;
+    }
+    .end-node {
+      background-color: red;
+    }
+    .visited-node {
+      background-color: yellow;
+    }
+    .path-node {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container" id="grid-container"></div>
+  <button id="startButton" onclick="startDFS()">Start DFS</button>
+  <button id="stopButton" onclick="stopDFS()">Stop</button>
+
+  <script>
+    const gridContainer = document.getElementById('grid-container');
+    const numRows = 10;
+    const numCols = 10;
+    const grid = [];
+    const startNode = { row: 0, col: 0 };
+    const endNode = { row: 9, col: 9 };
+    let traversalInterval;
+    const stack = [];
+
+    for (let i = 0; i < numRows; i++) {
+      const row = [];
+      for (let j = 0; j < numCols; j++) {
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+        cell.textContent = (i * numCols + j + 1).toString();
+        if (i === startNode.row && j === startNode.col) {
+          cell.className += ' start-node';
+        }
+        if (i === endNode.row && j === endNode.col) {
+          cell.className += ' end-node';
+        }
+        row.push(cell);
+        gridContainer.appendChild(cell);
+      }
+      grid.push(row);
+    }
+
+    const visited = Array(numRows)
+      .fill(false)
+      .map(() => Array(numCols).fill(false));
+
+    const path = [];
+
+    const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]; // Up, Down, Left, Right
+
+    function startDFS() {
+      disableButtons(true); // Disable start and stop buttons during traversal
+      stack.push(startNode);
+      traversalInterval = setInterval(() => {
+        if (stack.length > 0) {
+          const current = stack.pop();
+          const row = current.row;
+          const col = current.col;
+          if (row === endNode.row && col === endNode.col) {
+            stopDFS();
+            showPath();
+            return;
+          }
+          visited[row][col] = true;
+          grid[row][col].classList.add('visited-node');
+          setTimeout(() => {
+            grid[row][col].classList.remove('visited-node');
+            for (const [dr, dc] of directions) {
+              const newRow = row + dr;
+              const newCol = col + dc;
+              if (newRow >= 0 && newRow < numRows && newCol >= 0 && newCol < numCols && !visited[newRow][newCol]) {
+                stack.push({ row: newRow, col: newCol });
+                path[newRow * numCols + newCol] = { prev: { row, col } };
+              }
+            }
+          }, 300);
+        } else {
+          stopDFS();
+          showPath();
+        }
+      }, 500);
+    }
+
+    function showPath() {
+      let row = endNode.row;
+      let col = endNode.col;
+      while (row !== startNode.row || col !== startNode.col) {
+        grid[row][col].classList.add('path-node');
+        const prev = path[row * numCols + col].prev;
+        row = prev.row;
+        col = prev.col;
+      }
+    }
+
+    function stopDFS() {
+      clearInterval(traversalInterval);
+      disableButtons(false); // Enable start and stop buttons after stopping
+    }
+
+    function disableButtons(disabled) {
+      document.getElementById('startButton').disabled = disabled;
+      document.getElementById('stopButton').disabled = !disabled;
+    }
+  </script>
+</body>
+</html>
